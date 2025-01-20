@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useState } from 'react'
-import NavBar from '../components/partials/navBar'
 const UpdatePassword = () => {
 
     const [response, setResponse] = useState({
@@ -56,7 +55,6 @@ const UpdatePassword = () => {
 
     return (
         <>
-            <NavBar />
             <div>
                 {response && (
                     <div className="responseContainer">

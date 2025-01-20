@@ -17,7 +17,7 @@ const NavBar = () => {
                     <NavLink to="/not-found">not-found</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/update-password">Update Password</NavLink>
+                    <NavLink to="/dashboard/update-password">Update Password</NavLink>
                 </li>
             </ul>
         </nav>

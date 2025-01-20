@@ -6,23 +6,27 @@ import './index.css'
 import App from './App.jsx'
 import Login from './pages/login.jsx'
 import Register from './pages/register.jsx'
+import DashboardWrapper from './pages/DashboardWrapper.jsx'
 import UpdatePassword from './pages/updatePassword.jsx'
+import DashboardHome from './pages/DashboardHome.jsx'
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+         <Route path="/" element={<App />} />
 
 
-        <Route path="login" element={<Login />}>
-          <Route path="settings" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+
+         <Route path="/register" element={<Register />} />
+
+         <Route path="dashboard" element={<DashboardWrapper />}>
+          <Route index element={<DashboardHome />} />
+          <Route path="update-password" element={<UpdatePassword />} />
         </Route>
 
-        <Route path="/register" element={<Register />} />
-
-        <Route path="/update-password" element={<UpdatePassword />} />
-
-      <Route path="*" element={<PageNotFound />} />
+      <Route path="/*" element={<PageNotFound />} />
       </Routes>
 
     </BrowserRouter>
