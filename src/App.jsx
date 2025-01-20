@@ -1,13 +1,12 @@
 import './App.css'
-import LoginPage from './pages/login'
-function App() {
+import NavBar from './components/partials/navBar'
 
-
+const App = () => {
   return (
     <>
-      <LoginPage />
+      <NavBar />
     </>
   )
 }
 
-export default App
+export default App;
