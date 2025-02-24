@@ -4,6 +4,7 @@ import UserCard from "../components/UserCard"
 
 const AdminDashboard = () => {
     const [users, setUsers] = useState([])
+    const [userCount, setUserCount] = useState(0)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
@@ -12,6 +13,7 @@ const AdminDashboard = () => {
             try {
                 const response = await axios.get('http://localhost:3000/api/v1/user/')
                 setUsers(response.data.users)
+                setUserCount(response.data.users.length)
                 setLoading(false)
             } catch (err) {
                 setError(err.message)
@@ -29,7 +31,8 @@ const AdminDashboard = () => {
         <div>
             <h1>Admin Dashboard</h1>
             <div className="userContainer">
-                {Array.isArray(users) && users.length > 0? (
+                <p>user count: {userCount}</p>
+                {Array.isArray(users) && users.length > 0 ? (
                     users.map(user => (
                         <UserCard key={user.id} user={user} />
                     ))

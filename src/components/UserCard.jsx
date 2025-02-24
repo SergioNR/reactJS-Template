@@ -1,14 +1,13 @@
-import { Link } from 'react-router'
 const UserCard = ({user}) => {
 
     return (
         <div className="userCard" key={user._id}>
-            <p>Name: {user.userDetails.email}</p>
-            <p>Role: {user.userDetails.role}</p>
-            <p>created at: {user.createdDate}</p>
-            <p>last updated at: {user.lastUpdatedDate}</p>
-            <p>last login at: {user.lastLoginDate || 'never logged in'}</p>
-            <Link to={`/adminDashboard/userProfile/${user._id}`}>View Profile</Link>
+            <p>user id: {user.id}</p>
+            <p>Name: {user.email}</p>
+            <p>Role: {user.role}</p>
+            <p>created at: {user.created_at}</p>
+            <p>last updated at: {user.last_updated_at.toLocaleString('en-GB')}</p>
+            <p>last login at: {user.last_login_at || 'never logged in'}</p>
 
         </div>
     )
