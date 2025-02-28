@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
-import UserCard from "../components/UserCard"
+import UserCard from "../../components/UserCard"
 
 const AdminDashboard = () => {
     const [users, setUsers] = useState([])
@@ -11,11 +11,14 @@ const AdminDashboard = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/v1/user/')
+                const response = await axios.get('http://localhost:3000/api/v1/user/', {
+                    withCredentials: true,
+                })
                 setUsers(response.data.users)
                 setUserCount(response.data.users.length)
                 setLoading(false)
             } catch (err) {
+                console.log(err);
                 setError(err.message)
                 setLoading(false)
             }

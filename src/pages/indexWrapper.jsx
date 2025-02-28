@@ -1,15 +1,15 @@
 import { Outlet } from 'react-router'
-import NavBar from '../components/partials/navBar'
-import Footer from '../components/partials/Footer';
+import SiteNavBar from '../components/partials/SiteNavBar'
+import SiteFooter from '../components/partials/SiteFooter';
 
 const IndexWrapper = () => {
     return (
         <>
-          <NavBar />
+          <SiteNavBar />
           <div className='homepage'>
                 <Outlet />
             </div>
-            <Footer />
+            <SiteFooter />
         </>
       )
     };

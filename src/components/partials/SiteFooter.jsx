@@ -1,6 +1,6 @@
 import { NavLink } from "react-router";
 
-const Footer = () => {
+const SiteFooter = () => {
     return (
         <div className="footer">
 
@@ -11,7 +11,7 @@ const Footer = () => {
                 <li>
                     <NavLink to="/terminos-condiciones">Términos y condiciones</NavLink>
                 </li>
-                    <li>Item 2</li>
+                    <li>Site-Footer</li>
                     <li>Item 3</li>
                     <li>Item 4</li>
                 </ul>
@@ -39,4 +39,4 @@ const Footer = () => {
     )
 }
 
-export default Footer;
+export default SiteFooter;

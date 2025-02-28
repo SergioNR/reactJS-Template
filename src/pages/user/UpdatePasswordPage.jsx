@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
-const UpdatePassword = () => {
+const UpdatePasswordPage = () => {
 
     const [response, setResponse] = useState({
     })
@@ -10,12 +10,13 @@ const UpdatePassword = () => {
 
         try {
             const passwordUpdateData = {
-                userId: `678e5e357b5b63f89e42e53a`, // TODO - GET USER ID FROM JWT or EXPRESS-SESSION
                 currentPassword: e.target.currentPassword.value,
                 newPassword: e.target.newPassword.value,
             };
 
-            const response = await axios.patch('http://localhost:3000/api/v1/user/updateUserPassword', passwordUpdateData)
+            const response = await axios.patch('http://localhost:3000/api/v1/auth/updateUserPassword', passwordUpdateData, {
+                withCredentials: true,
+            })
             setResponse({
                 success: true,
                 message: response.data.message
@@ -76,8 +77,8 @@ const UpdatePassword = () => {
 
                 <h1>Update Password</h1>
                 <form onSubmit={handleSubmit}>
-                    <input type="password" name="currentPassword" placeholder="Current Password" defaultValue='123456' /> 
-                    <input type="password" name="newPassword" placeholder="New Password" defaultValue='' />
+                    <input type="password" name="currentPassword" placeholder="Current Password" defaultValue='password' /> 
+                    <input type="password" name="newPassword" placeholder="New Password" defaultValue='password' />
                     <button type="submit">Update Password</button>
                 </form>
             </div>
@@ -85,4 +86,4 @@ const UpdatePassword = () => {
     )
 }
 
-export default UpdatePassword
+export default UpdatePasswordPage

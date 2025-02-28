@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -18,13 +17,24 @@ const LoginForm = () => {
         const password = formData.get('password');
 
         try {
-            const response = await axios.post('http://localhost:3000/auth/login', { username, password });
 
-            console.log(response);
+            const response = await fetch('http://localhost:3000/api/v1/auth/login/local', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+            })
 
-            if (response.data.success === true) {
+            console.log(response)
+            const jsonResponse = await response.json();
+
+
+            if (jsonResponse.success === true) {
                 console.log('Login successful:', response.data);
-                navigate('/adminDashboard');
+
+                navigate('/user');
             }
 
         } catch (error) {
@@ -46,8 +56,8 @@ const LoginForm = () => {
             <h1>Login Page</h1>
             {errors && <div className="error">{errors}</div>}
             <form method="post" action="/login" onSubmit={handleLogin}>
-                <input type="text" name="username" placeholder="Username" defaultValue="inventado1@gmail.com" />
-                <input type="password" name="password" placeholder="Password" defaultValue="123456" />
+                <input type="text" name="username" placeholder="Username" defaultValue="username@gmail.com" />
+                <input type="password" name="password" placeholder="Password" defaultValue="password" />
                 <button type="submit">Login</button>
             </form>
         </div>

@@ -1,4 +1,3 @@
-import NavBar from '../components/partials/navBar'
 import axios from 'axios'
 import { useState } from 'react'
 
@@ -11,7 +10,7 @@ const RegisterPage = () => {
         e.preventDefault()
         
         try {
-            const response = await axios.post('http://localhost:3000/api/v1/user/createUser', {
+            const response = await axios.post('http://localhost:3000/api/v1/user/register/local', {
                 username: e.target.username.value,
                 password: e.target.password.value
             })
@@ -41,7 +40,6 @@ const RegisterPage = () => {
 
     return (
         <>
-            <NavBar />
             <div>
                 {response && (
                     <div className="responseContainer">

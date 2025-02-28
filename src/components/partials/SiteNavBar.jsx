@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router'
+import LogInLink from '../navBarElements/LogInLink.jsx';
+import RegisterLink from '../navBarElements/RegisterLink.jsx';
 
-const NavBar = () => {
+const SiteNavBar = () => {
     return (
         <div className="navBarWrapper">
 
@@ -17,28 +19,21 @@ const NavBar = () => {
                         <NavLink to="/">Home</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/login">Login</NavLink>
+                        <NavLink to="/terminos-condiciones">Términos y condiciones</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/register">Register</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/not-found">not-found</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/dashboard/update-password">Update Password</NavLink>
-                    </li>
+                        <NavLink to="/preguntas-frecuentes">Preguntas frecuentes</NavLink>
+                        </li>
                 </ul>
             </nav>
 
 
             <div className='buttonWrapper'>
-                <NavLink to="/login">Login</NavLink>
-                <NavLink to="/register">register</NavLink>
-
+            <LogInLink />
+            <RegisterLink /> {/* Added RegisterLink component here */}
             </div>
         </div>
-    )
+    );
 };
 
-export default NavBar;
+export default SiteNavBar;
