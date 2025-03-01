@@ -17,6 +17,7 @@ import UserHome from './pages/user/UserHome.jsx'
 import RecoverPasswordPage from './pages/auth/RecoverPasswordPage.jsx'
 import FAQs from './pages/site/FAQs.jsx'
 import AuthWrapper from './pages/auth/AuthWrapper.jsx'
+import UpdateRecoveredPasswordPage from './pages/auth/UpdateRecoveredPasswordPage.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -45,6 +46,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path='recover-password' element={<RecoverPasswordPage />} />
+          <Route path='create-new-password' element={<UpdateRecoveredPasswordPage />} />
         </Route>
 
 
