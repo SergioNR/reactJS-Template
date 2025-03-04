@@ -33,7 +33,12 @@ const LoginForm = () => {
 
             if (jsonResponse.success === true) {
 
-                navigate('/user');
+                if (jsonResponse.data.role === 'admin') {
+                    navigate('/admin');
+                }
+                else {
+                    navigate('/user');
+                }
             }
 
         } catch (error) {
