@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router'
+import UserCard from '../../components/UserCard'
 
 const UserProfile = () => {
     
@@ -12,7 +13,7 @@ const UserProfile = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/v1/user/profile`, {
+                const response = await axios.get(`${import.meta.env.VITE_SERVER_API}/api/v1/user/profile`, {
                     withCredentials: true,
                 })
 
@@ -31,7 +32,7 @@ const UserProfile = () => {
 
         const deleteUser = async () => {
             try {
-                const response = await axios.delete(`http://localhost:3000/api/v1/user/delete`, 
+                const response = await axios.delete(`${import.meta.env.VITE_SERVER_API}/api/v1/user/delete`, 
                 {
                     withCredentials: true,
                 });
@@ -54,12 +55,7 @@ const UserProfile = () => {
         <>
 
         <div>
-            <h1>User Profile</h1>
-            <p>created At: {user.created_at}</p>
-            <p>updated At: {user.last_updated_at}</p>
-            <p>Role: {user.role}</p>
-            <p>id: {user.id}</p>
-            <p>Email: {user.email}</p>
+        <UserCard user={user} />
         </div>
         <div className="userActions">
         <h2>Available actions</h2>

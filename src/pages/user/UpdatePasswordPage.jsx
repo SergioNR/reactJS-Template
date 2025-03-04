@@ -14,7 +14,7 @@ const UpdatePasswordPage = () => {
                 newPassword: e.target.newPassword.value,
             };
 
-            const response = await axios.patch('http://localhost:3000/api/v1/auth/updateUserPassword', passwordUpdateData, {
+            const response = await axios.patch(`${import.meta.env.VITE_SERVER_API}/api/v1/auth/updateUserPassword`, passwordUpdateData, {
                 withCredentials: true,
             })
             setResponse({
