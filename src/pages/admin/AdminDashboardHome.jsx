@@ -11,14 +11,13 @@ const AdminDashboard = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/v1/user/', {
+                const response = await axios.get(`${import.meta.env.VITE_SERVER_API}/api/v1/admin/`, {
                     withCredentials: true,
                 })
                 setUsers(response.data.users)
                 setUserCount(response.data.users.length)
                 setLoading(false)
             } catch (err) {
-                console.log(err);
                 setError(err.message)
                 setLoading(false)
             }

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 
 const LoginForm = () => {
 
-    const [errors, setErrors] = useState(null);
+    const [loginResponse, setLoginResponse] = useState(null);
 
     const navigate = useNavigate();
     
@@ -18,7 +18,7 @@ const LoginForm = () => {
 
         try {
 
-            const response = await fetch('http://localhost:3000/api/v1/auth/login/local', {
+            const response = await fetch(`${import.meta.env.VITE_SERVER_API}/api/v1/auth/login/local`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -27,12 +27,11 @@ const LoginForm = () => {
                 body: JSON.stringify({ username, password }),
             })
 
-            console.log(response)
             const jsonResponse = await response.json();
 
+            setLoginResponse(jsonResponse)
 
             if (jsonResponse.success === true) {
-                console.log('Login successful:', response.data);
 
                 navigate('/user');
             }
@@ -41,20 +40,22 @@ const LoginForm = () => {
             console.error('Login failed:', error);
             
             if (error.response.status === 401) {
-                setErrors('The combination of user and password is incorrect');
+                setLoginResponse('The combination of user and password is incorrect');
             }
             else {
-                setErrors(error.message);
+                setLoginResponse(error.message);
             }
-
         }
     };
 
     
     return (
+
         <div>
             <h1>Login Page</h1>
-            {errors && <div className="error">{errors}</div>}
+            {loginResponse && <div className="error">
+                <p>{loginResponse.message}</p>
+            </div>}
             <form method="post" action="/login" onSubmit={handleLogin}>
                 <input type="text" name="username" placeholder="Username" defaultValue="username@gmail.com" />
                 <input type="password" name="password" placeholder="Password" defaultValue="password" />

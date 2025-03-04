@@ -10,7 +10,7 @@ const RegisterPage = () => {
         e.preventDefault()
         
         try {
-            const response = await axios.post('http://localhost:3000/api/v1/user/register/local', {
+            const response = await axios.post(`${import.meta.env.VITE_SERVER_API}/api/v1/user/register/local`, {
                 username: e.target.username.value,
                 password: e.target.password.value
             })

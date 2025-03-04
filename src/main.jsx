@@ -32,6 +32,7 @@ createRoot(document.getElementById('root')).render(
 
         <Route path='/admin' element={<AdminDashboardWrapper />} >
           <Route index element={<AdminDashboardHome />} />
+          
         </Route>
 
         <Route path='/user' element={<UserWrapper />} >
