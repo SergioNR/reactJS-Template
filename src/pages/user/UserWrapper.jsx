@@ -21,7 +21,6 @@ const UserWrapper = () => {
 
 
             } catch (error) {
-                console.error('Authentication check failed:', error);
                 navigate('/auth/login');
             }
         };
