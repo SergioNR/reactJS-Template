@@ -18,7 +18,7 @@ const AdminDashboard = () => {
                 setUserCount(response.data.users.length)
                 setLoading(false)
             } catch (err) {
-                setError(err.message)
+                setError('User is not authorized to view this page - please log in again')
                 setLoading(false)
             }
         }

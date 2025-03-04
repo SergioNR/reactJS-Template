@@ -42,13 +42,18 @@ const LoginForm = () => {
             }
 
         } catch (error) {
-            console.error('Login failed:', error);
             
             if (error.response.status === 401) {
-                setLoginResponse('The combination of user and password is incorrect');
+                setLoginResponse(
+                    { 
+                        message: 'Invalid username or password' 
+                    }
+                );
             }
             else {
-                setLoginResponse(error.message);
+                setLoginResponse({
+                    message: error.message
+            });
             }
         }
     };
