@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import apiClient from "../config/API/axiosConfig.mjs";
 
 const LoginForm = () => {
 
@@ -18,7 +19,7 @@ const LoginForm = () => {
 
         try {
 
-            const response = await fetch(`${import.meta.env.VITE_SERVER_API}/api/v1/auth/login/local`, {
+            const response = await apiClient.post(`/api/v1/auth/login/local`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {

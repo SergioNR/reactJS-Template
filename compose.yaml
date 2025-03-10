@@ -1,0 +1,15 @@
+services:
+  reactjs:
+    build:
+      context: .
+    environment:
+      VITE_SERVER_API: ${VITE_SERVER_API}
+    ports:
+      - 5374:5374
+    develop:
+      watch:
+        - path: .
+          action: sync+restart #* Synchronize code changes and restart the server
+          target: /usr/src/app/
+
+

@@ -1,5 +1,6 @@
-import axios from 'axios'
+import apiClient from '../../config/API/axiosConfig.mjs'
 import { useState } from 'react'
+
 
 const RegisterPage = () => {
 
@@ -10,7 +11,7 @@ const RegisterPage = () => {
         e.preventDefault()
         
         try {
-            const response = await axios.post(`${import.meta.env.VITE_SERVER_API}/api/v1/auth/register/local`, {
+            const response = await apiClient.post(`/api/v1/auth/register/local`, {
                 username: e.target.username.value,
                 password: e.target.password.value
             })
