@@ -1,6 +1,7 @@
 import apiClient from "../../config/API/axiosConfig.mjs";
 import { useState, useEffect } from "react"
 import UserCard from "../../components/UserCard"
+import { logError } from "../../config/logging/loggerFunctions.mjs";
 
 const AdminDashboard = () => {
     const [users, setUsers] = useState([])
@@ -17,6 +18,7 @@ const AdminDashboard = () => {
                 setLoading(false)
             } catch (err) {
                 
+                logError('Failed to fetch users', err)
 
                 setError('User is not authorized to view this page - please log in again')
                 

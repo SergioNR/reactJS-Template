@@ -1,4 +1,4 @@
-import axios from "axios";
+import { logError } from "../../config/logging/loggerFunctions.mjs";
 import apiClient from "../../config/API/axiosConfig.mjs";
 
 const RecoverPasswordPage = () => {
@@ -16,7 +16,8 @@ const RecoverPasswordPage = () => {
 
         } catch (error) {
 
-            console.error("Error recovering password:", error);
+            logError('Failed to recover password', error);
+
         }
     }
 

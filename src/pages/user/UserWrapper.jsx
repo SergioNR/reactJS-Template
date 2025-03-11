@@ -4,6 +4,7 @@ import UserFooter from "../../components/partials/UserFooter";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import apiClient from "../../config/API/axiosConfig.mjs";
+import { logError } from "../../config/logging/loggerFunctions.mjs";
 
 const UserWrapper = () => {
 
@@ -14,13 +15,12 @@ const UserWrapper = () => {
         const checkAuth = async () => {
             try {
                 await apiClient.get(`/api/v1/auth/check-session`);
-                    withCredentials: true
-                });
                 
                 setLoading(false);
 
 
             } catch (error) {
+                logError('Failed to check session', error);
                 navigate('/auth/login');
             }
         };

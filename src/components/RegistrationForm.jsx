@@ -1,5 +1,6 @@
 import apiClient from "../config/API/axiosConfig.mjs"
 import { useState } from "react"
+import { logError } from "../config/logging/loggerFunctions.mjs"
 
 const RegistrationForm = () => {
 
@@ -32,7 +33,7 @@ const handleSubmit = async (e) => {
             })
         }
     } catch (err) {
-        setResponse({
+        logError('Registration failed', err, 'N/A')
             success: false,
             message: err.message
         })

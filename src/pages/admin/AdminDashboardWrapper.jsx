@@ -3,6 +3,7 @@ import AdminNavBar from '../../components/partials/AdminNavBar.jsx'
 import { useNavigate } from 'react-router';
 import { useState, useEffect } from "react";
 import apiClient from '../../config/API/axiosConfig.mjs';
+import { logError } from '../../config/logging/loggerFunctions.mjs';
 
 export const AdminDashboardWrapper = () => {
     
@@ -14,13 +15,12 @@ export const AdminDashboardWrapper = () => {
         const checkAuth = async () => {
             try {
                 await apiClient.get(`/api/v1/auth/check-session`);
-                    withCredentials: true
-                });
                 
                 setLoading(false);
 
 
             } catch (error) {
+                logError('Failed to check session', error);
                 setLoading(false);
                 navigate('/auth/login');
             }
