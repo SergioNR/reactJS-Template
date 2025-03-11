@@ -1,4 +1,4 @@
-import axios from 'axios';
+import apiClient from '../../config/API/axiosConfig.mjs';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router';
 
@@ -20,7 +20,7 @@ const UpdateRecoveredPasswordPage = () => {
                 confirmNewPassword: e.target.confirmNewPassword.value,
             };
 
-            const response = await axios.patch(`${import.meta.env.VITE_SERVER_API}/api/v1/auth/createNewPassword`, formData);
+            const response = await apiClient.patch(`/api/v1/auth/createNewPassword`, formData);
 
             setPasswordUpdateResponse(response.data);
         } catch (error) {

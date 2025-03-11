@@ -1,4 +1,4 @@
-import axios from "axios"
+import apiClient from "../../config/API/axiosConfig.mjs";
 import { useState, useEffect } from "react"
 import UserCard from "../../components/UserCard"
 
@@ -9,21 +9,22 @@ const AdminDashboard = () => {
     const [error, setError] = useState(null)
 
     useEffect(() => {
-        const fetchUsers = async () => {
+        const getAllUsers = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_SERVER_API}/api/v1/admin/`, {
-                    withCredentials: true,
-                })
+                const response = await apiClient.get(`/api/v1/admin/`)
                 setUsers(response.data.users)
                 setUserCount(response.data.users.length)
                 setLoading(false)
             } catch (err) {
+                
+
                 setError('User is not authorized to view this page - please log in again')
+                
                 setLoading(false)
             }
         }
 
-        fetchUsers()
+        getAllUsers()
     }, [])
 
     if (loading) return <div>Loading...</div>

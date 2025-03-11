@@ -1,4 +1,4 @@
-import axios from 'axios'
+import apiClient from '../../config/API/axiosConfig.mjs'
 import { useState } from 'react'
 const UpdatePasswordPage = () => {
 
@@ -14,7 +14,7 @@ const UpdatePasswordPage = () => {
                 newPassword: e.target.newPassword.value,
             };
 
-            const response = await axios.patch(`${import.meta.env.VITE_SERVER_API}/api/v1/auth/updateUserPassword`, passwordUpdateData, {
+            const response = await apiClient.patch(`/api/v1/auth/updateUserPassword`, passwordUpdateData)
                 withCredentials: true,
             })
             setResponse({

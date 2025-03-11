@@ -1,4 +1,5 @@
 import axios from "axios";
+import apiClient from "../../config/API/axiosConfig.mjs";
 
 const RecoverPasswordPage = () => {
     
@@ -11,7 +12,7 @@ const RecoverPasswordPage = () => {
         }
 
         try {
-            await axios.post(`${import.meta.env.VITE_SERVER_API}/api/v1/auth/recoverPassword`, formData);
+            await apiClient.post(`/api/v1/auth/recoverPassword`, formData);
 
         } catch (error) {
 

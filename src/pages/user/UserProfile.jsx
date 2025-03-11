@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import apiClient from '../../config/API/axiosConfig.mjs'
 import { useNavigate } from 'react-router'
 import UserCard from '../../components/UserCard'
 
@@ -13,9 +13,7 @@ const UserProfile = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_SERVER_API}/api/v1/user/profile`, {
-                    withCredentials: true,
-                })
+                const response = await apiClient.get(`/api/v1/user/profile`)
 
                 setLoading(false);
                 setUser(response.data.user)
@@ -32,10 +30,7 @@ const UserProfile = () => {
 
         const deleteUser = async () => {
             try {
-                const response = await axios.delete(`${import.meta.env.VITE_SERVER_API}/api/v1/user/delete`, 
-                {
-                    withCredentials: true,
-                });
+                const response = await apiClient.delete(`/api/v1/user/delete`);
 
                 if (response.status === 200) {
                     navigate('/');

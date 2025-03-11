@@ -3,7 +3,7 @@ import UserNavBar from "../../components/partials/UserNavBar";
 import UserFooter from "../../components/partials/UserFooter";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import apiClient from "../../config/API/axiosConfig.mjs";
 
 const UserWrapper = () => {
 
@@ -13,7 +13,7 @@ const UserWrapper = () => {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                await axios.get(`${import.meta.env.VITE_SERVER_API}/api/v1/auth/check-session`, {
+                await apiClient.get(`/api/v1/auth/check-session`);
                     withCredentials: true
                 });
                 
