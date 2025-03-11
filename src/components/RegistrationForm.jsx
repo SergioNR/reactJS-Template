@@ -7,7 +7,6 @@ const RegistrationForm = () => {
 const [response, setResponse] = useState({
 })
 
-
 const handleSubmit = async (e) => {
     e.preventDefault()
     
@@ -17,25 +16,32 @@ const handleSubmit = async (e) => {
             password: e.target.password.value
         })
         
-
-        if (response.data.success === false) {
-            
-            setResponse({
-                success: false,
-                message: response.data.message // TODO - SHOW CORRECT ERROR MESSAGE
-            })
-        }
-
-        if (response.data.success === true) {
-            setResponse({
-                success: true,
-                message: response.data.message
-            })
-        }
+        setResponse({
+            success: true,
+            message: response.data.message
+        })
+        
     } catch (err) {
+
+        if (err.status === 409) {
+            return setResponse({
+                success: false,
+                message: 'Username already exists'
+            })
+        }
+
+        if (err.status === 422) {
+            return setResponse({
+                success: false,
+                message: 'Please provide a valid email and password'
+            })
+        }
+
         logError('Registration failed', err, 'N/A')
+
+        return setResponse({
             success: false,
-            message: err.message
+            message: 'Internal error, please try again in a few minutes'
         })
     }
 }
@@ -45,19 +51,12 @@ return (
         <div>
             {response && (
                 <div className="responseContainer">
-                {response.success === false && (
-                    <div className="errorDiv">
                         <p>{response.message}</p>
                     </div>
                 )}
+        </div>
 
-                {response.success === true && (
-                    <div className="successDiv">
-                        <p>{response.message}</p>
-                    </div>
-                )}
-            </div>
-            )}
+        <div>
             
             <h1>Register Page</h1>
             <form onSubmit={handleSubmit}>
