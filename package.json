@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "start:dev-preview": "vite preview",
+    "start:preview": "vite preview",
     "start:local": "vite",
     "test:ui": "npx playwright test --ui",
     "test:noui": "npx playwright test"
@@ -13,6 +13,7 @@
   "dependencies": {
     "axios": "^1.7.9",
     "js-cookie": "^3.0.5",
+    "pino": "^9.6.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router": "^7.1.3",
