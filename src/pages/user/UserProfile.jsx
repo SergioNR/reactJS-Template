@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router'
-import UserCard from '../../components/UserCard'
+import UserCard from '../../components/login/UserCard'
 
 const UserProfile = () => {
     

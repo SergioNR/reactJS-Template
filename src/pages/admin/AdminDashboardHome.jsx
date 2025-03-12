@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
-import UserCard from "../../components/UserCard"
+import UserCard from "../../components/login/UserCard"
 
 const AdminDashboard = () => {
     const [users, setUsers] = useState([])
