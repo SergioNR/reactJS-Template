@@ -1,58 +1,46 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import apiClient from "../config/API/axiosConfig.mjs";
+import { logError } from "../config/logging/loggerFunctions.mjs";
 
 const LoginForm = () => {
 
     const [loginResponse, setLoginResponse] = useState(null);
-
     const navigate = useNavigate();
     
     const handleLogin = async (e) => {
-        
-
         e.preventDefault();
 
-        const formData = new FormData(e.target);
-        const username = formData.get('username');
-        const password = formData.get('password');
+        const data = {
+            username: e.target.username.value,
+            password: e.target.password.value
+        }
 
         try {
-
-            const response = await apiClient.post(`/api/v1/auth/login/local`, {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ username, password }),
-            })
-
-            const jsonResponse = await response.json();
-
-            setLoginResponse(jsonResponse)
-
-            if (jsonResponse.success === true) {
-
-                if (jsonResponse.user.role === 'admin') {
-                    navigate('/admin');
-                }
-                else {
-                    navigate('/user');
-                }
+            const loginResponse = await apiClient.post(`/api/v1/auth/login/local`, data);
+            
+            switch (loginResponse.data.user.role) {
+                case "admin":
+                    return navigate('/admin');
+                case "user":
+                    return navigate('/user');
+                default:
+                    return navigate('/');
             }
 
         } catch (error) {
-            
-            if (error.response.status === 401) {
-                setLoginResponse(
+            if (error && error.loginResponse.status === 401) {
+                return setLoginResponse(
                     { 
+                        success: false,
                         message: 'Invalid username or password' 
                     }
                 );
             }
             else {
-                setLoginResponse({
+                logError('Error in login functionality', error, 'N/A');
+                return setLoginResponse({
+                    success: false,
                     message: error.message
             });
             }
@@ -64,10 +52,12 @@ const LoginForm = () => {
 
         <div>
             <h1>Login Page</h1>
-            {loginResponse && <div className="error">
-                <p>{loginResponse.message}</p>
-            </div>}
-            <form method="post" action="/login" onSubmit={handleLogin}>
+            {loginResponse && 
+                <div>
+                    <p>{loginResponse.message}</p>
+                </div>
+                }
+            <form onSubmit={handleLogin}>
                 <input type="text" name="username" placeholder="Username" defaultValue="username@gmail.com" />
                 <input type="password" name="password" placeholder="Password" defaultValue="password" />
                 <button type="submit">Login</button>

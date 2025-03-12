@@ -21,7 +21,6 @@ const send = async function (level, logEvent, a , b) {
     }),
 
   });
-  console.log(response);
 };
 
 export const logger = pino({

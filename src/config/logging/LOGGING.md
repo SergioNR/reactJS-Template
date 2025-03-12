@@ -44,7 +44,6 @@ const sendLogs = async function (level, logEvent, a, b) {
       context: logEvent.messages[0].context,
     }),
   });
-  console.log(response);
 };
 ```
 
