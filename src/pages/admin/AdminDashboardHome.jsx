@@ -1,5 +1,6 @@
 import apiClient from "../../config/API/axiosConfig.mjs";
 import { useState, useEffect } from "react"
+import UserCard from "../../components/login/UserCard"
 <<<<<<< HEAD
 import UserCard from "../../components/UserCard"
 import { logError } from "../../config/logging/loggerFunctions.mjs";
