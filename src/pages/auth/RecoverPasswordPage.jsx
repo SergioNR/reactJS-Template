@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { logError } from "../../config/logging/loggerFunctions.mjs";
 import apiClient from "../../config/API/axiosConfig.mjs";
 
@@ -21,16 +22,17 @@ const RecoverPasswordPage = () => {
         }
     }
 
-    
-    return (
+=======
+import ForgotPasswordForm from "../../components/login/RecoverPasswordForm";
 
-        <div>
-            <h2>Recover Password</h2>
-            <form onSubmit={recoverPasswordRequest}>
-                <input type="email" name="email" placeholder="Enter your email" required defaultValue="username@gmail.com" />
-                <button type="submit">Recover Password</button>
-            </form>
-        </div>
+
+const RecoverPasswordPage = () => {
+    
+>>>>>>> b107f60 (ADD mantine & various styles)
+    
+
+    return (
+        <ForgotPasswordForm />
     )
 
 };
