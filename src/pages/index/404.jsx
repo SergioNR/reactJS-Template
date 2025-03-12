@@ -1,5 +1,6 @@
-import { Anchor, Button, Container, Group, Text, Title } from '@mantine/core';
+import { Button, Container, Group, Text, Title } from '@mantine/core';
 import classes from './NotFoundTitle.module.css';
+import { Link } from 'react-router';
 
 const PageNotFound = () => {
   return (
@@ -11,14 +12,13 @@ const PageNotFound = () => {
         been moved to another URL.
       </Text>
       <Group justify="center">
-        <Anchor href="/" size="md">
-          <Button variant="subtle" size="md">
-            Take me back to home page
-          </Button>
-        </Anchor>
+        <Button component={Link} to="/" variant="subtle" size="md">
+          Take me back to home page
+        </Button>
       </Group>
     </Container>
   );
 }
 
 export default PageNotFound;
+

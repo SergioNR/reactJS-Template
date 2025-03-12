@@ -1,12 +1,7 @@
 import apiClient from "../../config/API/axiosConfig.mjs";
 import { useState, useEffect } from "react"
-import UserCard from "../../components/login/UserCard"
-<<<<<<< HEAD
-import UserCard from "../../components/UserCard"
+import UserCard from "../../components/auth/UserCard"
 import { logError } from "../../config/logging/loggerFunctions.mjs";
-=======
-import UserCard from "../../components/login/UserCard"
->>>>>>> b107f60 (ADD mantine & various styles)
 
 const AdminDashboard = () => {
     const [users, setUsers] = useState([])

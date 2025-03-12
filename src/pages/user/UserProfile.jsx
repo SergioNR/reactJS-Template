@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import apiClient from '../../config/API/axiosConfig.mjs'
 import { useNavigate } from 'react-router'
-import UserCard from '../../components/login/UserCard'
+import UserCard from '../../components/auth/UserCard'
 
 const UserProfile = () => {
     
