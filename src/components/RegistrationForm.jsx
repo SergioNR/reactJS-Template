@@ -9,12 +9,14 @@ const [response, setResponse] = useState({
 
 const handleSubmit = async (e) => {
     e.preventDefault()
+
+    const data = {
+        username: e.target.username.value,
+        password: e.target.password.value
+    }
     
     try {
-        const response = await apiClient.post(`/api/v1/auth/register/local`, {
-            username: e.target.username.value,
-            password: e.target.password.value
-        })
+        const response = await apiClient.post(`/api/v1/auth/register/local`, data)
         
         setResponse({
             success: true,
