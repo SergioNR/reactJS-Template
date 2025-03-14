@@ -3,13 +3,13 @@ services:
     build:
       context: .
     environment:
-      VITE_SERVER_API: ${VITE_SERVER_API}
+      VITE_SERVER_API: http://localhost:3000
     ports:
-      - 5374:5374
+      - 80:80
     develop:
       watch:
         - path: .
-          action: sync+restart #* Synchronize code changes and restart the server
+          action: rebuild #* Synchronize code changes and restart the server
           target: /usr/src/app/
 
 

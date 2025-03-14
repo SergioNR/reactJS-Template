@@ -43,7 +43,7 @@ import {
             switch (loginResponse.data.user.role) {
                 case "admin":
                     return navigate('/admin');
-                case "user":
+                case "customer":
                     return navigate('/user');
                 default:
                     return navigate('/');
