@@ -33,7 +33,7 @@ import {
       const data = {
           username: e.target.username.value,
           password: e.target.password.value,
-          rememberMe: e.target.rememberMe.value,
+          // rememberMe: e.target.rememberMe.value,
       }
 
         try {
@@ -85,7 +85,7 @@ import {
         )}
         <Paper withBorder shadow="md" p={30} mt={30} radius="md">
           <form onSubmit={handleLogin}>
-            <TextInput name="username" label="username" placeholder="you@mantine.dev" required defaultValue="username2@gmail.com" />
+            <TextInput name="username" label="username" placeholder="you@mantine.dev" required defaultValue="username@gmail.com" />
             <PasswordInput name="password" label="password" placeholder="Your password" required mt="md" defaultValue="password" />
             <Group justify="space-between" mt="lg">
               <Checkbox name="rememberMe" label="Remember me" />

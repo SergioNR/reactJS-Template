@@ -23,8 +23,11 @@ const UserNavBar = () => {
                         <NavLink to="/user/update-password">Update Password</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/user/user-profile">user profile</NavLink>
-                        </li>
+                        <NavLink to="/user/profile">user profile</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/user/billing">Billing</NavLink>
+                    </li>
                 </ul>
             </nav>
 

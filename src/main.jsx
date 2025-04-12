@@ -20,6 +20,7 @@ import AuthWrapper from './pages/auth/AuthWrapper.jsx'
 import UpdateRecoveredPasswordPage from './pages/auth/UpdateRecoveredPasswordPage.jsx'
 import { MantineProvider } from '@mantine/core'
 import '@mantine/core/styles.css';
+import UserBilling from './pages/user/UserBilling.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -40,8 +41,10 @@ createRoot(document.getElementById('root')).render(
 
         <Route path='/user' element={<UserWrapper />} >
           <Route index element={<UserHome />} />
-          <Route path='user-profile' element={<UserProfile />} />
+          <Route path='profile' element={<UserProfile />} />
           <Route path="update-password" element={<UpdatePasswordPage />} />
+          <Route path="billing" element={<UserBilling />} />
+
         </Route>
         
 
